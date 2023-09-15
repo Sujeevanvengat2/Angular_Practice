@@ -1,0 +1,88 @@
+<!-- <div class="container">
+  <table class="table">
+    <caption>
+      TODOS List
+    </caption>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>DESCRIPTION</th>
+        <th>DONE</th>
+        <th>TARGETDATE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of todos">
+        <td>{{ i.id }}</td>
+        <td>{{ i.description }}</td>
+        <td>{{ i.done }}</td>
+        <td>{{ i.targetDate | date | uppercase | lowercase }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> ID. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+    </ng-container>
+    <!-- Position Column -->
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef> User Name. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.username }} </mat-cell>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.description }} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="done">
+      <mat-header-cell *matHeaderCellDef> Done </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.done }} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="targetDate">
+      <mat-header-cell *matHeaderCellDef> Target Date </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.targetDate }}
+      </mat-cell>
+    </ng-container>
+    <!-- Update Column -->
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef> EDIT </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          aria-label="delete icon"
+          (click)="handleEdit(element)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          aria-label="delete icon"
+          (click)="handleDelete(element)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+</div>
+<button (click)="addTodo()" mat-flat-button color="primary">Create Todo</button>

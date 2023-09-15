@@ -1,0 +1,80 @@
+@import "../../styles/general/utils";
+@import "../../styles/general/variables";
+
+.login {
+  width: 90vw;
+  height: 90vh;
+  background-color: #fffbec;
+  @include div-position-center-row;
+
+  .loginContainer {
+    background-color: $white;
+    padding: 2rem;
+    width: 70%;
+    height: 70%;
+    border-radius: 11px;
+    @include div-position-center-row;
+    border-radius: 16px;
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+
+    .loginContainer__left {
+      flex: 0.4;
+      width: 80%;
+      @include div-position-center-column;
+      align-items: flex-start !important;
+      gap: 1rem;
+
+      h1 {
+        font-weight: 700;
+        font-size: 2rem;
+        margin-bottom: 3rem !important;
+        margin: auto;
+      }
+
+      &-row {
+        @include div-position-center-row;
+        gap: 0.7rem;
+        width: 100%;
+        // padding: 3px;
+
+        .form-field {
+          width: 100%;
+
+          .form-field-row {
+            @include div-position-center-row;
+            gap: 1rem;
+
+            .input {
+              background: transparent;
+            }
+
+            .mat-icon {
+              overflow: visible !important;
+            }
+          }
+        }
+      }
+      button {
+        background-color: #1a1e31;
+        color: $white;
+        margin: auto;
+        padding: 0 3rem;
+      }
+    }
+
+    .loginContainer__right {
+      flex: 0.5;
+      @include div-position-center-column;
+
+      a {
+        font-size: 1.5rem;
+        letter-spacing: 0;
+      }
+
+      img {
+        object-fit: contain;
+        width: 80%;
+      }
+    }
+  }
+}

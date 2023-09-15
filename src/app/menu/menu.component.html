@@ -1,0 +1,58 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list border-color="black">
+      <!-- [routerLink]="['/welcome/sujeevan']"
+          routerLinkActive="router-link-active" -->
+      <a
+        mat-list-item
+        routerLink="/todos"
+        *ngIf="this.authenticationCheck.isUserLoggedin()"
+        >Todos</a
+      >
+      <a
+        mat-list-item
+        routerLink="/welcome/sujeevan"
+        *ngIf="this.authenticationCheck.isUserLoggedin()"
+        >Welcome</a
+      >
+      <a
+        mat-list-item
+        routerLink="/"
+        *ngIf="!this.authenticationCheck.isUserLoggedin()"
+        >Login</a
+      >
+      <a
+        mat-list-item
+        routerLink="/logout"
+        *ngIf="this.authenticationCheck.isUserLoggedin()"
+        >Logout</a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Todos Project</span>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+
+    <div class="footer" #footer>Your sticky footer with a variable height.</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

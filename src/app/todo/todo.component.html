@@ -1,0 +1,65 @@
+<div class="container">
+  <form class="example-form" [formGroup]="form">
+    <h1>Todo Creation</h1>
+    <!-- <mat-label>User Name: </mat-label>
+    <mat-form-field class="example-full-width">
+      <input matInput formControlName="username" minlength="5" />
+      <mat-error
+        *ngIf="username.hasError('username') && !username.hasError('required')"
+      >
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="username.hasError('required')">
+        userName is <strong>required</strong>
+      </mat-error>
+    </mat-form-field> -->
+
+    <!-- Discription -->
+    <mat-label>Description:</mat-label>
+    <mat-form-field class="example-full-width">
+      <textarea matInput formControlName="description"></textarea>
+      <mat-error
+        *ngIf="
+          description.hasError('description') &&
+          !description.hasError('required')
+        "
+      >
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="description.hasError('required')">
+        Description is required<strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Target Date -->
+    <mat-label>Target Date:</mat-label>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" formControlName="targetDate" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error
+        *ngIf="
+          targetDate.hasError('targetDate') && !targetDate.hasError('required')
+        "
+      >
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="targetDate.hasError('required')">
+        Data is required<strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <button
+      [disabled]="!form.valid"
+      mat-flat-button
+      color="primary"
+      type="submit"
+      (click)="onSubmit()"
+    >
+      Save
+    </button>
+  </form>
+</div>

@@ -1,0 +1,18 @@
+<!-- <div *ngIf="!msgWelcomeError"> -->
+<div>
+  <h1>{{ username }} Welcome to our app</h1>
+</div>
+<div class="container">
+  <h1>You can manage TOdos List: <a routerLink="/todos">click</a></h1>
+</div>
+
+Click here to get welcome message
+<button (click)="getWelcomeMessageWithParam()" mat-flat-button color="primary">
+  Get Welcome Message
+</button>
+<div *ngIf="msgWelcomeService">
+  <h1>Welcome sir, welcome to great currygalan magic show</h1>
+  <h2>{{ msgWelcomeService }}</h2>
+</div>
+<!-- </div> -->
+<!-- <app-list-todos></app-list-todos> -->
